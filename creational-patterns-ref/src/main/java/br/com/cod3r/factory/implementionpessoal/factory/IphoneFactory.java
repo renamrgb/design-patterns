@@ -28,6 +28,8 @@ public class IphoneFactory {
                 .stream()
                 .filter(imp -> imp.is(version, type))
                 .peek(Iphone::getHardware)
-                .map(Iphone::getInstance);
+                .findFirst()
+                .map(Iphone::getInstance)
+                .orElse(new Iphone11());
     }
 }
